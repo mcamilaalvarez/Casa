@@ -1,0 +1,8 @@
+<nav>
+    <div class="logo">Electricity</div>
+    <div class="nav-links">
+        <a href="#" th:href="@{/}" th:class="${currentPage == 'home'} ? 'active' : ''">Home</a>
+        <a href="#" th:href="@{/features}" th:class="${currentPage == 'features'} ? 'active' : ''">Articulos</a>
+        <a href="#" th:href="@{/pricing}" th:class="${currentPage == 'pricing'} ? 'active' : ''">Fabricas</a>
+    </div>
+</nav>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head th:replace="~{fragments/head :: head}"></head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav th:replace="~{fragments/navbar :: nav}"></nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Clean, Simple, Effective Design</h1>
+            <p >Experience the perfect balance of form and function with our minimalist approach to modern web design.</p>
+            <a href="#" th:href="@{${ctaLink}}" class="btn" >Get Started</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card" th:each="feature : ${features}">
+                    <div class="feature-icon">
+                        <span th:utext="${feature.icon}">★</span>
+                    </div>
+                    <h3 th:text="${feature.title}">Responsive Design</h3>
+                    <p th:text="${feature.description}">Our layouts adapt perfectly to any screen size, ensuring a great experience on all devices.</p>
+                </div>
+                
+                <!-- Static fallback content when no features are provided -->
+                <div class="feature-card" th:if="${features == null || features.empty}">
+                    <div class="feature-icon">★</div>
+                    <h3>Responsive Design</h3>
+                    <p>Our layouts adapt perfectly to any screen size, ensuring a great experience on all devices.</p>
+                </div>
+                <div class="feature-card" th:if="${features == null || features.empty}">
+                    <div class="feature-icon">✓</div>
+                    <h3>Clean Code</h3>
+                    <p>Built with best practices and maintainability in mind for long-term success.</p>
+                </div>
+                <div class="feature-card" th:if="${features == null || features.empty}">
+                    <div class="feature-icon">♥</div>
+                    <h3>User-Focused</h3>
+                    <p>Every element is designed with the user experience as the top priority.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="testimonials">
+        <div class="container">
+            <h2 th:text="${testimonialsTitle}">What Our Clients Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card" th:each="testimonial : ${testimonials}">
+                    <p class="testimonial-text" th:text="${testimonial.text}">"This minimalist design perfectly captures our brand essence while providing an exceptional user experience."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar" th:if="${testimonial.avatarUrl}" th:style="'background-image: url(' + @{${testimonial.avatarUrl}} + ');'"></div>
+                        <div>
+                            <strong th:text="${testimonial.name}">Jane Doe</strong>
+                            <div th:text="${testimonial.position}">CEO, Example Inc</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" th:if="${testimonials == null || testimonials.empty}">
+                    <p class="testimonial-text">"This minimalist design perfectly captures our brand essence while providing an exceptional user experience."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <strong>Jane Doe</strong>
+                            <div>CEO, Example Inc</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" th:if="${testimonials == null || testimonials.empty}">
+                    <p class="testimonial-text">"The clean interface has significantly improved our conversion rates and customer satisfaction scores."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <strong>John Smith</strong>
+                            <div>Marketing Director, Sample Co</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- <section class="cta">
+        <div class="container">
+            <h2 th:text="${ctaTitle}">Ready to Get Started?</h2>
+            <p th:text="${ctaDescription}">Join thousands of satisfied customers who have embraced our minimalist approach.</p>
+            <a href="#" th:href="@{${ctaLink}}" class="btn" th:text="${ctaText}">Get Started</a>
+        </div>
+    </section> -->
+
+    <footer  th:replace="~{fragments/footer :: footer}"></footer>
+
+</body>
+</html>
